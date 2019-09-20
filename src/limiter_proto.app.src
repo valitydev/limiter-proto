@@ -1,0 +1,11 @@
+{application, limiter_proto, [
+    {description, "Thrift proto for Limiter"},
+    {vsn, "1.0.0"},
+    {applications, [
+        kernel,
+        stdlib
+    ]},
+    {maintainers, [
+        "Artem Fedorenko <a.fedorenko@rbkmoney.com>"
+    ]}
+]}.
