@@ -1,2 +1,2 @@
-# bender-proto
-Thrift protocol for bender service
+# limiter-proto
+Thrift protocol for limiter service
