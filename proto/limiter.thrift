@@ -15,18 +15,28 @@ typedef shumpune.Clock Clock
 typedef shumpune.Balance Balance
 typedef base.InvalidRequest InvalidRequest
 
+/**
+*  Описывает типы лимитов:
+*  cash - валютный лимит - ассоциирован с изменением сумм в какой-либо валюте
+*  count - счетный лимит - ассоциирован с количеством каких-либо операций в системе
+*/
 enum LimitType {
     cash
     count
 }
 
+/**
+* Структура данных, описывающая свойства сублимита:
+* account_id -идентификатор аккаунта ассоциированного с временным действием сублимита
+* time_range - время действия сублимита
+*/
 struct Sublimit {
     1: required AccountID account_id
     2: required LimitTimeRange time_range
 }
 
 /**
-* Структура данных, описывающая свойства счета:
+* Структура данных, описывающая свойства лимита:
 * id -идентификатор машины лимита
 * ref - идентификатор лимита в domain конфигурации
 * domain_revision - ревизия конфигурации
@@ -48,7 +58,6 @@ struct Limit {
 *  cash - изменение валютного лимита
 *  count - изменение счетного лимита
 */
-
 union LimitUnit {
    1: LimitUnitCash cash
    2: LimitUnitCount count
