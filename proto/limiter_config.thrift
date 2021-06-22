@@ -27,7 +27,20 @@ struct LimitConfig {
     8: optional LimitType type
     9: optional LimitScope scope
     10: optional string description
+    12: optional OperationLimitBehaviour op_behaviour
 }
+
+struct OperationLimitBehaviour {
+    1: optional OperationBehaviour invoice_payment_refund
+}
+
+union OperationBehaviour {
+    1: Subtraction subtraction
+    2: Addition addition
+}
+
+struct Subtraction {}
+struct Addition {}
 
 union LimitBodyType {
     1: LimitBodyTypeAmount amount
