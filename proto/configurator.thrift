@@ -26,9 +26,13 @@ exception LimitConfigNameNotFound {}
 exception LimitConfigNotFound {}
 
 service Configurator {
-    LimitConfig Create(1: LimitCreateParams params) throws (
+    LimitConfig CreateLegacy(1: LimitCreateParams params) throws (
         1: LimitConfigNameNotFound e1,
         2: base.InvalidRequest e2
+    )
+
+    LimitConfig Create(1: limiter_config.LimitConfigParams params) throws (
+        1: base.InvalidRequest e1
     )
 
     LimitConfig Get(1: LimitConfigID id) throws (
