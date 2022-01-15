@@ -2,7 +2,7 @@
  * Машина хранящая конфигурацию лимита
  */
 
-namespace java   com.rbkmoney.limiter.config
+namespace java   dev.vality.limiter.config
 namespace erlang limiter_config
 
 include "base.thrift"

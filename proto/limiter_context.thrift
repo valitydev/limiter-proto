@@ -1,6 +1,6 @@
 include "base.thrift"
 
-namespace java com.rbkmoney.limiter.context
+namespace java dev.vality.limiter.context
 namespace erlang limiter_context
 
 typedef base.ID ID
@@ -11,7 +11,6 @@ struct LimitContext {
 
 /**
  * Контекст, получаемый из сервисов, реализующих один из интерфейсов протокола
- * https://github.com/rbkmoney/damsel/tree/master/proto/payment_processing.thrift
  * (например invoicing в hellgate)
  */
 struct ContextPaymentProcessing {

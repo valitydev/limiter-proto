@@ -2,7 +2,7 @@
  * Временные интервалы
  */
 
-namespace java   com.rbkmoney.limiter.range.time
+namespace java   dev.vality.limiter.range.time
 namespace erlang time_range
 
 include "base.thrift"

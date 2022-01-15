@@ -1,7 +1,7 @@
 include "base.thrift"
 include "limiter_context.thrift"
 
-namespace java com.rbkmoney.limiter
+namespace java dev.vality.limiter
 namespace erlang limiter
 
 typedef base.ID LimitChangeID

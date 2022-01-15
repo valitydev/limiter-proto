@@ -1,4 +1,4 @@
-namespace java com.rbkmoney.limiter.base
+namespace java dev.vality.limiter.base
 namespace erlang limiter_base
 
 /**
@@ -44,15 +44,11 @@ typedef binary Opaque
 
 /**
  * Идентификатор валюты
- *
- * Украдено из https://github.com/rbkmoney/damsel/blob/8235b6f6/proto/domain.thrift#L912
  */
 struct CurrencyRef { 1: required CurrencySymbolicCode symbolic_code }
 
 /**
  * Объём денежных средств
- *
- * Украдено из https://github.com/rbkmoney/damsel/blob/8235b6f6/proto/domain.thrift#L70
  */
 struct Cash {
     1: required Amount amount

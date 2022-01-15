@@ -2,7 +2,7 @@
  * Машина хранящая временные интервалы
  */
 
-namespace java   com.rbkmoney.limiter.range
+namespace java   dev.vality.limiter.range
 namespace erlang limiter_range
 
 include "base.thrift"
