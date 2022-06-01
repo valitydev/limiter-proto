@@ -1,9 +1,9 @@
 name: Erlang
 on:
   pull_request:
-    branches: [ '*' ]
+    branches: ['*']
   push:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
@@ -13,9 +13,9 @@ jobs:
 
       - uses: actions/checkout@v3
 
-      - uses: valitydev/action-setup-thrift@b457b89c7e1e960ea354f510bce69a725d16c556
+      - uses: valitydev/action-setup-thrift@v1
         with:
-          thrift-version: '0.14.2'
+          thrift-version: '0.14.2.2'
 
       - uses: erlef/setup-beam@v1.9
         id: beam
