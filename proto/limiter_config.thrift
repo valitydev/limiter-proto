@@ -23,7 +23,7 @@ struct LimitConfigParams {
     5: required time_range.TimeRangeType time_range_type
     6: required LimitContextType context_type
     7: required LimitType type
-    8: required LimitScope scopes
+    8: required LimitScope scope
     9: optional string description
     10: required OperationLimitBehaviour op_behaviour
 }
@@ -38,7 +38,7 @@ struct LimitConfig {
     7: required time_range.TimeRangeType time_range_type
     11: required LimitContextType context_type
     8: optional LimitType type
-    9: optional LimitScope scopes
+    9: optional LimitScope scope
     10: optional string description
     12: optional OperationLimitBehaviour op_behaviour
 }
@@ -73,26 +73,46 @@ union LimitType {
 struct LimitTypeTurnover {}
 
 union LimitScope {
-    1: LimitScopeGlobal scope_global
-    // Возможно, это поле так и останется т.к. конфиги создаются разово, и
-    // помимо machinegun попадает и в kafka
-    2: LimitScopeType scope_deprecated
-    3: set<LimitScopeType> scopes
-}
 
-struct LimitScopeGlobal {}
+    /**
+     * Set of scopes.
+     * Each additional scope increases specificity of a limit. Each possible set describes unique
+     * limit, e.g. limit with scope { party } and limit with scope { party, shop } are completely
+     * different limits. Empty set is equivalent to a limit having global scope.
+     */
+    3: set<LimitScopeType> multi
+
+    /**
+     * Single scope.
+     * Equivalent to the set of scopes containing exactly one scope.
+     * Kept to preserve backward compatibility with existing data.
+     */
+    2: LimitScopeType single
+
+    // Reserved
+    // 1
+
+}
 
 union LimitScopeType {
-    1: LimitScopeTypeParty party
-    2: LimitScopeTypeShop shop
-    3: LimitScopeTypeWallet wallet
-    4: LimitScopeTypeIdentity identity
+
+    1: LimitScopeEmptyDetails party
+    2: LimitScopeEmptyDetails shop
+    3: LimitScopeEmptyDetails wallet
+    4: LimitScopeEmptyDetails identity
+
+    /**
+     * Scope over data which uniquely identifies payment tool used in a payment.
+     * E.g. `domain.BankCard.token` + `domain.BankCard.exp_date` when bank card is being used as
+     * payment tool.
+     *
+     * See: https://github.com/valitydev/damsel/blob/2e1dbc1a/proto/domain.thrift#L1824-L1830
+     */
+    5: LimitScopeEmptyDetails payment_tool
+
 }
 
-struct LimitScopeTypeParty {}
-struct LimitScopeTypeShop {}
-struct LimitScopeTypeWallet {}
-struct LimitScopeTypeIdentity {}
+struct LimitScopeEmptyDetails {}
 
 union LimitContextType {
     1: LimitContextTypePaymentProcessing payment_processing
