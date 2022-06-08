@@ -17,7 +17,6 @@ typedef base.CurrencySymbolicCode CurrencySymbolicCode
 
 struct LimitConfigParams {
     1: required LimitConfigID id
-    2: required LimitBodyType body_type
     3: required Timestamp started_at
     4: required ShardSize shard_size
     5: required time_range.TimeRangeType time_range_type
@@ -32,7 +31,6 @@ struct LimitConfig {
     1: required LimitConfigID id
     2: required string processor_type
     3: required Timestamp created_at
-    4: required LimitBodyType body_type
     5: required Timestamp started_at
     6: required ShardSize shard_size
     7: required time_range.TimeRangeType time_range_type
@@ -41,6 +39,9 @@ struct LimitConfig {
     9: optional LimitScope scope
     10: optional string description
     12: optional OperationLimitBehaviour op_behaviour
+
+    // deprecated
+    4: optional LimitBodyType body_type_deprecated
 }
 
 struct OperationLimitBehaviour {
@@ -55,22 +56,38 @@ union OperationBehaviour {
 struct Subtraction {}
 struct Addition {}
 
-union LimitBodyType {
-    1: LimitBodyTypeAmount amount
-    2: LimitBodyTypeCash cash
-}
-
-struct LimitBodyTypeAmount {}
-struct LimitBodyTypeCash {
-    1: required CurrencySymbolicCode currency
-}
-
-
 union LimitType {
     1: LimitTypeTurnover turnover
 }
 
-struct LimitTypeTurnover {}
+struct LimitTypeTurnover {
+    /**
+     * Metric to account turnover with.
+     * If undefined, equivalent to specifying `LimitTurnoverNumber`.
+     */
+    1: optional LimitTurnoverMetric metric
+}
+
+union LimitTurnoverMetric {
+
+    /**
+     * Measure turnover over number of operations.
+     */
+    1: LimitTurnoverNumber number
+
+    /**
+     * Measure turnover over aggregate amount of operations denominated in a single currency.
+     * In the event operation's currency differs from limit's currency operation will be accounted
+     * with appropriate exchange rate fixed against operation's timestamp.
+     */
+    2: LimitTurnoverAmount amount
+
+}
+
+struct LimitTurnoverNumber {}
+struct LimitTurnoverAmount {
+    1: required CurrencySymbolicCode currency
+}
 
 union LimitScope {
 
@@ -133,4 +150,14 @@ union Change {
 
 struct CreatedChange {
     1: required LimitConfig limit_config
+}
+
+/// Deprecated definitions
+
+union LimitBodyType {
+    2: LimitBodyTypeCash cash
+}
+
+struct LimitBodyTypeCash {
+    1: required CurrencySymbolicCode currency
 }
