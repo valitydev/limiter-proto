@@ -1,4 +1,6 @@
-include "base.thrift"
+include "proto/base.thrift"
+include "proto/domain.thrift"
+include "limiter_base.thrift"
 include "limiter_context.thrift"
 
 namespace java dev.vality.limiter
@@ -11,6 +13,7 @@ typedef base.ID ShopID
 typedef base.ID WalletID
 typedef base.ID IdentityID
 typedef limiter_context.LimitContext LimitContext
+typedef limiter_base.AmountRange AmountRange
 
 /**
  * https://en.wikipedia.org/wiki/Vector_clock
@@ -31,7 +34,7 @@ union Clock {
 
 struct Limit {
     1: required LimitID id
-    2: required base.Amount amount
+    2: required domain.Amount amount
     3: optional base.Timestamp creation_time
     4: optional string description
 }
@@ -44,8 +47,8 @@ struct LimitChange {
 exception LimitNotFound {}
 exception LimitChangeNotFound {}
 exception ForbiddenOperationAmount {
-    1: required base.Amount amount
-    2: required base.AmountRange allowed_range
+    1: required domain.Amount amount
+    2: required AmountRange allowed_range
 }
 
 service Limiter {

@@ -1,4 +1,4 @@
-include "base.thrift"
+include "proto/base.thrift"
 include "limiter.thrift"
 include "limiter_config.thrift"
 

@@ -5,15 +5,16 @@
 namespace java   dev.vality.limiter.config
 namespace erlang limiter_config
 
-include "base.thrift"
+include "proto/base.thrift"
+include "proto/domain.thrift"
 include "time_range.thrift"
 
 /// Domain
 
 typedef base.ID LimitConfigID
 typedef base.Timestamp Timestamp
-typedef base.Amount ShardSize
-typedef base.CurrencySymbolicCode CurrencySymbolicCode
+typedef domain.Amount ShardSize
+typedef domain.CurrencySymbolicCode CurrencySymbolicCode
 
 struct LimitConfigParams {
     1: required LimitConfigID id

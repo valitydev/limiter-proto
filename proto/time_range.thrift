@@ -5,14 +5,15 @@
 namespace java   dev.vality.limiter.range.time
 namespace erlang time_range
 
-include "base.thrift"
+include "proto/base.thrift"
+include "proto/domain.thrift"
 
 /// Domain
 
 typedef base.ID LimitRangeID
-typedef base.AccountID AccountID
+typedef domain.AccountID AccountID
 typedef base.Timestamp Timestamp
-typedef base.Amount IntervalAmount
+typedef domain.Amount IntervalAmount
 
 union TimeRangeType {
     1: TimeRangeTypeCalendar calendar
