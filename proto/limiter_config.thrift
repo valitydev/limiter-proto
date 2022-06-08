@@ -22,7 +22,6 @@ struct LimitConfigParams {
     5: required time_range.TimeRangeType time_range_type
     6: required LimitContextType context_type
     7: required LimitType type
-    2: optional LimitTurnoverMetric turnover_metric
     8: required LimitScope scope
     9: optional string description
     10: required OperationLimitBehaviour op_behaviour
@@ -37,10 +36,12 @@ struct LimitConfig {
     7: required time_range.TimeRangeType time_range_type
     11: required LimitContextType context_type
     8: optional LimitType type
-    4: optional LimitTurnoverMetric turnover_metric
     9: optional LimitScope scope
     10: optional string description
     12: optional OperationLimitBehaviour op_behaviour
+
+    // deprecated
+    4: optional LimitBodyType body_type_deprecated
 }
 
 struct OperationLimitBehaviour {
@@ -59,7 +60,13 @@ union LimitType {
     1: LimitTypeTurnover turnover
 }
 
-struct LimitTypeTurnover {}
+struct LimitTypeTurnover {
+    /**
+     * Metric to account turnover with.
+     * If undefined, equivalent to specifying `LimitTurnoverNumber`.
+     */
+    1: optional LimitTurnoverMetric metric
+}
 
 union LimitTurnoverMetric {
 
@@ -143,4 +150,14 @@ union Change {
 
 struct CreatedChange {
     1: required LimitConfig limit_config
+}
+
+/// Deprecated definitions
+
+union LimitBodyType {
+    2: LimitBodyTypeCash cash
+}
+
+struct LimitBodyTypeCash {
+    1: required CurrencySymbolicCode currency
 }
