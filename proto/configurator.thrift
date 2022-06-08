@@ -9,7 +9,6 @@ typedef base.ID LimitName
 typedef limiter_config.LimitConfigID LimitConfigID
 typedef limiter_config.ShardSize ShardSize
 typedef limiter_config.LimitConfig LimitConfig
-typedef limiter_config.LimitBodyType LimitBodyType
 typedef limiter_config.OperationLimitBehaviour OperationLimitBehaviour
 
 struct LimitCreateParams {
@@ -18,7 +17,6 @@ struct LimitCreateParams {
     /** Идентификатор набора настроек создаваемого лимата, в будущем идентификатор заменит структура конфигурации */
     3: optional LimitName name
     4: optional string description
-    5: optional LimitBodyType body_type
     6: optional OperationLimitBehaviour op_behaviour
 }
 
