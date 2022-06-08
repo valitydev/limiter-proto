@@ -17,12 +17,12 @@ typedef base.CurrencySymbolicCode CurrencySymbolicCode
 
 struct LimitConfigParams {
     1: required LimitConfigID id
+    2: required LimitBodyType body_type
     3: required Timestamp started_at
     4: required ShardSize shard_size
     5: required time_range.TimeRangeType time_range_type
     6: required LimitContextType context_type
     7: required LimitType type
-    2: optional LimitTurnoverMetric turnover_metric
     8: required LimitScope scope
     9: optional string description
     10: required OperationLimitBehaviour op_behaviour
@@ -32,12 +32,12 @@ struct LimitConfig {
     1: required LimitConfigID id
     2: required string processor_type
     3: required Timestamp created_at
+    4: required LimitBodyType body_type
     5: required Timestamp started_at
     6: required ShardSize shard_size
     7: required time_range.TimeRangeType time_range_type
     11: required LimitContextType context_type
     8: optional LimitType type
-    4: optional LimitTurnoverMetric turnover_metric
     9: optional LimitScope scope
     10: optional string description
     12: optional OperationLimitBehaviour op_behaviour
@@ -55,32 +55,25 @@ union OperationBehaviour {
 struct Subtraction {}
 struct Addition {}
 
+union LimitBodyType {
+    1: LimitBodyTypeAmount amount
+    2: LimitBodyTypeCash cash
+}
+
+struct LimitBodyTypeAmount {
+    /** Идентификатор метрики, которую необходимо считать при изменении лимита */
+    1: required string metric
+}
+struct LimitBodyTypeCash {
+    1: required CurrencySymbolicCode currency
+}
+
+
 union LimitType {
     1: LimitTypeTurnover turnover
 }
 
 struct LimitTypeTurnover {}
-
-union LimitTurnoverMetric {
-
-    /**
-     * Measure turnover over number of operations.
-     */
-    1: LimitTurnoverNumber number
-
-    /**
-     * Measure turnover over aggregate amount of operations denominated in a single currency.
-     * In the event operation's currency differs from limit's currency operation will be accounted
-     * with appropriate exchange rate fixed against operation's timestamp.
-     */
-    2: LimitTurnoverAmount amount
-
-}
-
-struct LimitTurnoverNumber {}
-struct LimitTurnoverAmount {
-    1: required CurrencySymbolicCode currency
-}
 
 union LimitScope {
 
