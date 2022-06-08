@@ -1,4 +1,5 @@
-include "base.thrift"
+include "proto/base.thrift"
+include "proto/domain.thrift"
 
 namespace java dev.vality.limiter.context
 namespace erlang limiter_context
@@ -38,7 +39,7 @@ struct Invoice {
     1: optional ID id
     2: optional ID owner_id
     3: optional ID shop_id
-    4: optional base.Cash cost
+    4: optional domain.Cash cost
     5: optional base.Timestamp created_at
     6: optional InvoicePayment effective_payment
     7: optional InvoiceAdjustment effective_adjustment
@@ -52,11 +53,11 @@ struct InvoicePayment {
     1: optional ID id
     2: optional ID owner_id
     3: optional ID shop_id
-    4: optional base.Cash cost
-    11: optional base.Cash capture_cost
+    4: optional domain.Cash cost
+    11: optional domain.Cash capture_cost
     5: optional base.Timestamp created_at
     6: optional InvoicePaymentFlow flow
-    7: optional Payer payer
+    7: optional domain.Payer payer
     8: optional InvoicePaymentAdjustment effective_adjustment
     9: optional InvoicePaymentRefund effective_refund
     10: optional InvoicePaymentChargeback effective_chargeback
@@ -73,16 +74,6 @@ union InvoicePaymentFlow {
 struct InvoicePaymentFlowInstant {}
 struct InvoicePaymentFlowHold {}
 
-union Payer {
-    1: PaymentResourcePayer payment_resource
-    2: CustomerPayer customer
-    3: RecurrentPayer recurrent
-}
-
-struct PaymentResourcePayer {}
-struct CustomerPayer {}
-struct RecurrentPayer {}
-
 struct InvoicePaymentAdjustment {
     1: optional ID id
     2: optional base.Timestamp created_at
@@ -90,13 +81,13 @@ struct InvoicePaymentAdjustment {
 
 struct InvoicePaymentRefund {
     1: optional ID id
-    2: optional base.Cash cost
+    2: optional domain.Cash cost
     3: optional base.Timestamp created_at
 }
 
 struct InvoicePaymentChargeback {
     1: optional ID id
     2: optional base.Timestamp created_at
-    3: optional base.Cash levy
-    4: optional base.Cash body
+    3: optional domain.Cash levy
+    4: optional domain.Cash body
 }
