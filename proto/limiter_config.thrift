@@ -3,7 +3,7 @@
  */
 
 namespace java   dev.vality.limiter.config
-namespace erlang limiter_config
+namespace erlang limiter.config
 
 include "proto/base.thrift"
 include "proto/domain.thrift"
