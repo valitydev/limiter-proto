@@ -1,5 +1,6 @@
 include "proto/base.thrift"
 include "proto/domain.thrift"
+include "limiter_payproc_context.thrift"
 
 namespace java dev.vality.limiter.context
 namespace erlang limiter_context
@@ -7,7 +8,8 @@ namespace erlang limiter_context
 typedef base.ID ID
 
 struct LimitContext {
-    1: optional ContextPaymentProcessing payment_processing
+    1: optional ContextPaymentProcessing limiter_payment_processing
+    2: optional limiter_payproc_context.ContextPaymentProcessing payment_processing
 }
 
 /**
