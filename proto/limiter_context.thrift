@@ -57,7 +57,7 @@ struct InvoicePayment {
     11: optional domain.Cash capture_cost
     5: optional base.Timestamp created_at
     6: optional InvoicePaymentFlow flow
-    7: optional domain.Payer payer
+    7: optional Payer payer
     8: optional InvoicePaymentAdjustment effective_adjustment
     9: optional InvoicePaymentRefund effective_refund
     10: optional InvoicePaymentChargeback effective_chargeback
@@ -73,6 +73,16 @@ union InvoicePaymentFlow {
 
 struct InvoicePaymentFlowInstant {}
 struct InvoicePaymentFlowHold {}
+
+union Payer {
+    1: PaymentResourcePayer payment_resource
+    2: CustomerPayer customer
+    3: RecurrentPayer recurrent
+}
+
+struct PaymentResourcePayer {}
+struct CustomerPayer {}
+struct RecurrentPayer {}
 
 struct InvoicePaymentAdjustment {
     1: optional ID id

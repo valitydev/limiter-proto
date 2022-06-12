@@ -10,7 +10,6 @@ include "proto/domain.thrift"
 
 /// Domain
 
-typedef base.ID LimitRangeID
 typedef domain.AccountID AccountID
 typedef base.Timestamp Timestamp
 typedef domain.Amount IntervalAmount

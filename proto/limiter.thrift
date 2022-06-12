@@ -6,8 +6,8 @@ include "limiter_context.thrift"
 namespace java dev.vality.limiter
 namespace erlang limiter
 
-typedef base.ID LimitChangeID
-typedef base.ID LimitID
+typedef string LimitChangeID
+typedef string LimitID
 typedef base.ID PartyID
 typedef base.ID ShopID
 typedef base.ID WalletID

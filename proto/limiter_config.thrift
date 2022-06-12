@@ -11,9 +11,9 @@ include "time_range.thrift"
 
 /// Domain
 
-typedef base.ID LimitConfigID
+typedef string LimitConfigID
 typedef base.Timestamp Timestamp
-typedef domain.Amount ShardSize
+typedef i64 ShardSize
 typedef domain.CurrencySymbolicCode CurrencySymbolicCode
 
 struct LimitConfigParams {

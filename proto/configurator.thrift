@@ -5,7 +5,7 @@ include "limiter_config.thrift"
 namespace java dev.vality.limiter.configurator
 namespace erlang limiter_cfg
 
-typedef base.ID LimitName
+typedef string LimitName
 typedef limiter_config.LimitConfigID LimitConfigID
 typedef limiter_config.ShardSize ShardSize
 typedef limiter_config.LimitConfig LimitConfig

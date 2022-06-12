@@ -1,4 +1,3 @@
-include "proto/base.thrift"
 include "proto/domain.thrift"
 
 namespace java dev.vality.limiter.base
