@@ -37,7 +37,8 @@ struct Invoice {
 
 struct InvoicePayment {
     1: optional domain.InvoicePayment payment
-    2: optional domain.InvoicePaymentAdjustment effective_adjustment
-    3: optional domain.InvoicePaymentRefund effective_refund
-    4: optional domain.InvoicePaymentChargeback effective_chargeback
+    2: optional domain.Cash capture_cost
+    3: optional domain.InvoicePaymentAdjustment effective_adjustment
+    4: optional domain.InvoicePaymentRefund effective_refund
+    5: optional domain.InvoicePaymentChargeback effective_chargeback
 }
