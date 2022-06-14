@@ -1,11 +1,11 @@
-include "base.thrift"
+include "proto/base.thrift"
 include "limiter.thrift"
 include "limiter_config.thrift"
 
 namespace java dev.vality.limiter.configurator
-namespace erlang limiter_cfg
+namespace erlang limiter.configurator
 
-typedef base.ID LimitName
+typedef string LimitName
 typedef limiter_config.LimitConfigID LimitConfigID
 typedef limiter_config.ShardSize ShardSize
 typedef limiter_config.LimitConfig LimitConfig

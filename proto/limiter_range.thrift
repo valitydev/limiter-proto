@@ -3,21 +3,22 @@
  */
 
 namespace java   dev.vality.limiter.range
-namespace erlang limiter_range
+namespace erlang limiter.range
 
-include "base.thrift"
+include "proto/base.thrift"
+include "proto/domain.thrift"
 include "time_range.thrift"
 
 /// Domain
 
-typedef base.ID LimitRangeID
+typedef string LimitRangeID
 typedef base.Timestamp Timestamp
 
 struct LimitRange {
     1: required LimitRangeID id
     2: required time_range.TimeRangeType type
     3: required Timestamp created_at
-    4: optional base.CurrencySymbolicCode currency
+    4: optional domain.CurrencySymbolicCode currency
 }
 
 struct LimitRangeState {
@@ -25,7 +26,7 @@ struct LimitRangeState {
     2: required time_range.TimeRangeType type
     3: required Timestamp created_at
     4: optional list<time_range.TimeRange> ranges
-    5: optional base.CurrencySymbolicCode currency
+    5: optional domain.CurrencySymbolicCode currency
 }
 
 /// LimitRange events
