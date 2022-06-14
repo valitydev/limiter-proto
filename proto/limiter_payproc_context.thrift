@@ -8,37 +8,36 @@ namespace erlang limiter.context.payproc
  * Контекст, получаемый из сервисов, реализующих один из интерфейсов протокола
  * (например invoicing в hellgate)
  */
-struct ContextPaymentProcessing {
-    1: optional PaymentProcessingOperation op
+struct Context {
+    1: optional Operation op
     2: optional Invoice invoice
 }
 
-union PaymentProcessingOperation {
-    1: PaymentProcessingOperationInvoice invoice
-    2: PaymentProcessingOperationInvoiceAdjustment invoice_adjustment
-    3: PaymentProcessingOperationInvoicePayment invoice_payment
-    4: PaymentProcessingOperationInvoicePaymentAdjustment invoice_payment_adjustment
-    5: PaymentProcessingOperationInvoicePaymentRefund invoice_payment_refund
-    6: PaymentProcessingOperationInvoicePaymentChargeback invoice_payment_chargeback
+union Operation {
+    1: OperationInvoice invoice
+    2: OperationInvoiceAdjustment invoice_adjustment
+    3: OperationInvoicePayment invoice_payment
+    4: OperationInvoicePaymentAdjustment invoice_payment_adjustment
+    5: OperationInvoicePaymentRefund invoice_payment_refund
+    6: OperationInvoicePaymentChargeback invoice_payment_chargeback
 }
 
-struct PaymentProcessingOperationInvoice {}
-struct PaymentProcessingOperationInvoiceAdjustment {}
-struct PaymentProcessingOperationInvoicePayment {}
-struct PaymentProcessingOperationInvoicePaymentAdjustment {}
-struct PaymentProcessingOperationInvoicePaymentRefund {}
-struct PaymentProcessingOperationInvoicePaymentChargeback {}
+struct OperationInvoice {}
+struct OperationInvoiceAdjustment {}
+struct OperationInvoicePayment {}
+struct OperationInvoicePaymentAdjustment {}
+struct OperationInvoicePaymentRefund {}
+struct OperationInvoicePaymentChargeback {}
 
 struct Invoice {
     1: optional domain.Invoice invoice
-    2: optional domain.InvoicePayment effective_payment
-    3: optional domain.InvoiceAdjustment effective_adjustment
+    2: optional domain.InvoicePayment payment
+    3: optional domain.InvoiceAdjustment adjustment
 }
 
 struct InvoicePayment {
     1: optional domain.InvoicePayment payment
-    2: optional domain.Cash capture_cost
-    3: optional domain.InvoicePaymentAdjustment effective_adjustment
-    4: optional domain.InvoicePaymentRefund effective_refund
-    5: optional domain.InvoicePaymentChargeback effective_chargeback
+    2: optional domain.InvoicePaymentAdjustment adjustment
+    3: optional domain.InvoicePaymentRefund refund
+    4: optional domain.InvoicePaymentChargeback chargeback
 }

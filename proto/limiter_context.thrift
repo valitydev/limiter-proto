@@ -9,7 +9,7 @@ typedef base.ID ID
 
 struct LimitContext {
     1: optional ContextPaymentProcessing limiter_payment_processing
-    2: optional limiter_payproc_context.ContextPaymentProcessing payment_processing
+    2: optional limiter_payproc_context.Context payment_processing
 }
 
 /**
