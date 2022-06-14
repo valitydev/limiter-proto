@@ -31,7 +31,7 @@ struct OperationInvoicePaymentChargeback {}
 
 struct Invoice {
     1: optional domain.Invoice invoice
-    2: optional domain.InvoicePayment payment
+    2: optional InvoicePayment payment
     3: optional domain.InvoiceAdjustment adjustment
 }
 
