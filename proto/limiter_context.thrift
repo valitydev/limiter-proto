@@ -3,7 +3,7 @@ include "proto/domain.thrift"
 include "limiter_payproc_context.thrift"
 
 namespace java dev.vality.limiter.context
-namespace erlang limiter.context
+namespace erlang limproto.context.limiter
 
 typedef base.ID ID
 

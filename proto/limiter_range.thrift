@@ -3,7 +3,7 @@
  */
 
 namespace java   dev.vality.limiter.range
-namespace erlang limiter.range
+namespace erlang limproto.range
 
 include "proto/base.thrift"
 include "proto/domain.thrift"

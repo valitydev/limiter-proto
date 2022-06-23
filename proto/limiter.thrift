@@ -4,7 +4,7 @@ include "limiter_base.thrift"
 include "limiter_context.thrift"
 
 namespace java dev.vality.limiter
-namespace erlang limiter
+namespace erlang limproto.limiter
 
 typedef string LimitChangeID
 typedef string LimitID

@@ -1,7 +1,7 @@
 include "proto/domain.thrift"
 
 namespace java dev.vality.limiter.base
-namespace erlang limiter.base
+namespace erlang limproto.base
 
 struct AmountRange {
     1: required AmountBound upper
