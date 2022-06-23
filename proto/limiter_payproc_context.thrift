@@ -2,7 +2,7 @@ include "proto/base.thrift"
 include "proto/domain.thrift"
 
 namespace java dev.vality.limiter.payproc.context
-namespace erlang limiter.context.payproc
+namespace erlang limproto.context.payproc
 
 /**
  * Контекст, получаемый из сервисов, реализующих один из интерфейсов протокола
