@@ -1,7 +1,8 @@
 include "proto/base.thrift"
 include "proto/domain.thrift"
 include "limiter_base.thrift"
-include "limiter_context.thrift"
+include "limiter_payproc_context.thrift"
+include "limiter_withdrawal_context.thrift"
 
 namespace java dev.vality.limiter
 namespace erlang limproto.limiter
@@ -12,8 +13,12 @@ typedef base.ID PartyID
 typedef base.ID ShopID
 typedef base.ID WalletID
 typedef base.ID IdentityID
-typedef limiter_context.LimitContext LimitContext
 typedef limiter_base.AmountRange AmountRange
+
+struct LimitContext {
+    1: optional limiter_withdrawal_context.Context withdrawal
+    2: optional limiter_payproc_context.Context payment_processing
+}
 
 /**
  * https://en.wikipedia.org/wiki/Vector_clock
