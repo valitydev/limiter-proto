@@ -19,5 +19,5 @@ union Operation {
 struct OperationWithdrawal {}
 
 struct Withdrawal {
-    1: optional withdrawals_domain.Withdrawal state
+    1: optional withdrawals_domain.Withdrawal withdrawal
 }
