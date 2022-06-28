@@ -16,7 +16,7 @@ typedef base.ID IdentityID
 typedef limiter_base.AmountRange AmountRange
 
 struct LimitContext {
-    1: optional limiter_withdrawal_context.Context withdrawal
+    1: optional limiter_withdrawal_context.Context withdrawal_processing
     2: optional limiter_payproc_context.Context payment_processing
 }
 
