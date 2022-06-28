@@ -134,11 +134,11 @@ struct LimitScopeEmptyDetails {}
 
 union LimitContextType {
     1: LimitContextTypePaymentProcessing payment_processing
-    2: LimitContextTypeWithdrawal withdrawal
+    2: LimitContextTypeWithdrawalProcessing withdrawal_processing
 }
 
 struct LimitContextTypePaymentProcessing {}
-struct LimitContextTypeWithdrawal {}
+struct LimitContextTypeWithdrawalProcessing {}
 
 /// LimitConfig events
 
