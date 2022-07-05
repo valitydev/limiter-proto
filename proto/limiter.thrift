@@ -57,18 +57,28 @@ exception ForbiddenOperationAmount {
 }
 
 service Limiter {
+
     Limit Get(1: LimitID id, 2: Clock clock, 3: LimitContext context) throws (
         1: LimitNotFound e1,
         2: base.InvalidRequest e2
     )
+
     Clock Hold(1: LimitChange change, 2: Clock clock, 3: LimitContext context) throws (
         1: LimitNotFound e1,
         3: base.InvalidRequest e2
     )
+
     Clock Commit(1: LimitChange change, 2: Clock clock, 3: LimitContext context) throws (
         1: LimitNotFound e1,
         2: LimitChangeNotFound e2,
         3: base.InvalidRequest e3,
         4: ForbiddenOperationAmount e4
     )
+
+    Clock Rollback(1: LimitChange change, 2: Clock clock, 3: LimitContext context) throws (
+        1: LimitNotFound e1,
+        2: LimitChangeNotFound e2,
+        3: base.InvalidRequest e3
+    )
+
 }
