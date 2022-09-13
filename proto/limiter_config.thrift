@@ -127,7 +127,7 @@ union LimitScopeType {
      * See: https://github.com/valitydev/damsel/blob/2e1dbc1a/proto/domain.thrift#L1824-L1830
      */
     5: LimitScopeEmptyDetails payment_tool
-
+    6: LimitScopeEmptyDetails terminal
 }
 
 struct LimitScopeEmptyDetails {}

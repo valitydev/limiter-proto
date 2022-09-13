@@ -40,4 +40,5 @@ struct InvoicePayment {
     2: optional domain.InvoicePaymentAdjustment adjustment
     3: optional domain.InvoicePaymentRefund refund
     4: optional domain.InvoicePaymentChargeback chargeback
+    5: optional domain.TerminalRef terminal_ref
 }
