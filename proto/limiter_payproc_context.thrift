@@ -1,5 +1,5 @@
-include "proto/base.thrift"
 include "proto/domain.thrift"
+include "limiter_base.thrift"
 
 namespace java dev.vality.limiter.payproc.context
 namespace erlang limproto.context.payproc
@@ -40,5 +40,5 @@ struct InvoicePayment {
     2: optional domain.InvoicePaymentAdjustment adjustment
     3: optional domain.InvoicePaymentRefund refund
     4: optional domain.InvoicePaymentChargeback chargeback
-    5: optional domain.TerminalRef terminal_ref
+    5: optional limiter_base.Route route
 }

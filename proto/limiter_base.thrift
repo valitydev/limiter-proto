@@ -12,3 +12,8 @@ union AmountBound {
     1: domain.Amount inclusive
     2: domain.Amount exclusive
 }
+
+struct Route {
+    1: optional domain.ProviderRef provider
+    2: optional domain.TerminalRef terminal
+}
