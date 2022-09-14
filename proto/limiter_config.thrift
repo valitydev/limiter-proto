@@ -129,6 +129,7 @@ union LimitScopeType {
     5: LimitScopeEmptyDetails payment_tool
     6: LimitScopeEmptyDetails provider
     7: LimitScopeEmptyDetails terminal
+    8: LimitScopeEmptyDetails email
 }
 
 struct LimitScopeEmptyDetails {}
