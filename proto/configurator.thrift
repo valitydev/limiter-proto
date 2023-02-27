@@ -14,7 +14,7 @@ typedef limiter_config.OperationLimitBehaviour OperationLimitBehaviour
 struct LimitCreateParams {
     1: required LimitConfigID id
     2: required base.Timestamp started_at
-    /** Идентификатор набора настроек создаваемого лимата, в будущем идентификатор заменит структура конфигурации */
+    /** Идентификатор набора настроек создаваемого лимита, в будущем идентификатор заменит структура конфигурации */
     3: optional LimitName name
     4: optional string description
     6: optional OperationLimitBehaviour op_behaviour
