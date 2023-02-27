@@ -1,5 +1,4 @@
 include "proto/base.thrift"
-include "proto/domain.thrift"
 include "limiter.thrift"
 include "limiter_config.thrift"
 
@@ -34,7 +33,7 @@ service Configurator {
         1: base.InvalidRequest e1
     )
 
-    LimitConfig Get(1: LimitConfigID id, 2: domain.DataRevision domain_revision) throws (
+    LimitConfig Get(1: LimitConfigID id) throws (
         1: LimitConfigNotFound e1,
         2: base.InvalidRequest e2
     )

@@ -47,6 +47,7 @@ struct Limit {
 struct LimitChange {
     1: required LimitID id
     2: required LimitChangeID change_id
+    3: optional domain.DataRevision domain_revision
 }
 
 exception LimitNotFound {}
