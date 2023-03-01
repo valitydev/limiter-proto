@@ -14,6 +14,7 @@ typedef base.ID ShopID
 typedef base.ID WalletID
 typedef base.ID IdentityID
 typedef limiter_base.AmountRange AmountRange
+typedef domain.DataRevision Version
 
 struct LimitContext {
     1: optional limiter_withdrawal_context.Context withdrawal_processing
@@ -47,7 +48,7 @@ struct Limit {
 struct LimitChange {
     1: required LimitID id
     2: required LimitChangeID change_id
-    3: optional domain.DataRevision domain_revision
+    3: optional Version version
 }
 
 exception LimitNotFound {}
@@ -60,6 +61,11 @@ exception ForbiddenOperationAmount {
 service Limiter {
 
     Limit Get(1: LimitID id, 2: Clock clock, 3: LimitContext context) throws (
+        1: LimitNotFound e1,
+        2: base.InvalidRequest e2
+    )
+
+    Limit GetVersioned(1: LimitID id, 2: Version version, 3: Clock clock, 4: LimitContext context) throws (
         1: LimitNotFound e1,
         2: base.InvalidRequest e2
     )
