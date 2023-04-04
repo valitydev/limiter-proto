@@ -57,6 +57,16 @@ exception ForbiddenOperationAmount {
     1: required domain.Amount amount
     2: required AmountRange allowed_range
 }
+exception InvalidOperationCurrency {
+    1: required domain.CurrencySymbolicCode currency
+    2: required domain.CurrencySymbolicCode expected_currency
+}
+exception ContextOperationNotSupported {
+    1: required LimitContextType context_type
+}
+exception PaymentToolNotSupported {
+    1: required string payment_tool
+}
 
 service Limiter {
 
@@ -73,6 +83,9 @@ service Limiter {
     Clock Hold(1: LimitChange change, 2: Clock clock, 3: LimitContext context) throws (
         1: LimitNotFound e1,
         3: base.InvalidRequest e2
+        4: InvalidOperationCurrency e3
+        4: ContextOperationNotSupported e4
+        5: PaymentToolNotSupported e5
     )
 
     Clock Commit(1: LimitChange change, 2: Clock clock, 3: LimitContext context) throws (
