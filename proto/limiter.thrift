@@ -1,5 +1,6 @@
 include "proto/base.thrift"
 include "proto/domain.thrift"
+include "proto/limiter_config.thrift"
 include "limiter_base.thrift"
 include "limiter_payproc_context.thrift"
 include "limiter_withdrawal_context.thrift"
@@ -15,6 +16,7 @@ typedef base.ID WalletID
 typedef base.ID IdentityID
 typedef limiter_base.AmountRange AmountRange
 typedef domain.DataRevision Version
+typedef limiter_config.LimitContextType LimitContextType
 
 struct LimitContext {
     1: optional limiter_withdrawal_context.Context withdrawal_processing
@@ -82,10 +84,10 @@ service Limiter {
 
     Clock Hold(1: LimitChange change, 2: Clock clock, 3: LimitContext context) throws (
         1: LimitNotFound e1,
-        2: base.InvalidRequest e2
-        3: InvalidOperationCurrency e3
-        4: OperationContextNotSupported e4
-        5: PaymentToolNotSupported e5
+        3: base.InvalidRequest e2
+        4: InvalidOperationCurrency e3
+        5: OperationContextNotSupported e4
+        6: PaymentToolNotSupported e5
     )
 
     Clock Commit(1: LimitChange change, 2: Clock clock, 3: LimitContext context) throws (
