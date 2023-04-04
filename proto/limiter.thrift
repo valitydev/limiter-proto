@@ -82,8 +82,8 @@ service Limiter {
 
     Clock Hold(1: LimitChange change, 2: Clock clock, 3: LimitContext context) throws (
         1: LimitNotFound e1,
-        3: base.InvalidRequest e2
-        4: InvalidOperationCurrency e3
+        2: base.InvalidRequest e2
+        3: InvalidOperationCurrency e3
         4: OperationContextNotSupported e4
         5: PaymentToolNotSupported e5
     )
