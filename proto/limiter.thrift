@@ -61,7 +61,7 @@ exception InvalidOperationCurrency {
     1: required domain.CurrencySymbolicCode currency
     2: required domain.CurrencySymbolicCode expected_currency
 }
-exception ContextOperationNotSupported {
+exception OperationContextNotSupported {
     1: required LimitContextType context_type
 }
 exception PaymentToolNotSupported {
@@ -84,7 +84,7 @@ service Limiter {
         1: LimitNotFound e1,
         3: base.InvalidRequest e2
         4: InvalidOperationCurrency e3
-        4: ContextOperationNotSupported e4
+        4: OperationContextNotSupported e4
         5: PaymentToolNotSupported e5
     )
 
