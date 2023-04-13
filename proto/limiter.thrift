@@ -55,23 +55,23 @@ struct LimitChange {
 }
 
 struct LimitChangeset {
-    required list<LimitChange> changes
+    1: required list<LimitChange> changes
 }
 
 struct LimitChangeStatus {
-    required LimitChange limit_change
-    required LimitChangeStatusCode status_code
+    1: required LimitChange limit_change
+    2: required LimitChangeStatusCode status_code
 }
 
 struct LimitChangesetStatus {
-    required list<LimitChangeStatus> statuses
+    1: required list<LimitChangeStatus> statuses
 }
 
 exception LimitNotFound {
-    optional LimitID id
+    1: optional LimitID id
 }
 exception LimitChangeNotFound {
-    optional LimitChange change
+    1: optional LimitChange change
 }
 exception ForbiddenOperationAmount {
     1: required domain.Amount amount
@@ -145,10 +145,10 @@ service Limiter {
      */
     Clock HoldChangeset(1: LimitChangeset changeset, 2: Clock clock, 3: LimitContext context) throws (
         1: LimitNotFound e1,
-        3: base.InvalidRequest e2
-        4: InvalidOperationCurrency e3
-        5: OperationContextNotSupported e4
-        6: PaymentToolNotSupported e5
+        2: base.InvalidRequest e2
+        3: InvalidOperationCurrency e3
+        4: OperationContextNotSupported e4
+        5: PaymentToolNotSupported e5
     )
 
     /**
