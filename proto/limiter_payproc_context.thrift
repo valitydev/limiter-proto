@@ -15,7 +15,6 @@ struct Context {
 
 union Operation {
     1: OperationInvoice invoice
-    2: OperationInvoiceAdjustment invoice_adjustment
     3: OperationInvoicePayment invoice_payment
     4: OperationInvoicePaymentAdjustment invoice_payment_adjustment
     5: OperationInvoicePaymentRefund invoice_payment_refund
@@ -23,7 +22,6 @@ union Operation {
 }
 
 struct OperationInvoice {}
-struct OperationInvoiceAdjustment {}
 struct OperationInvoicePayment {}
 struct OperationInvoicePaymentAdjustment {}
 struct OperationInvoicePaymentRefund {}
@@ -32,7 +30,6 @@ struct OperationInvoicePaymentChargeback {}
 struct Invoice {
     1: optional domain.Invoice invoice
     2: optional InvoicePayment payment
-    3: optional domain.InvoiceAdjustment adjustment
 }
 
 struct InvoicePayment {
