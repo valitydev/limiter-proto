@@ -1,4 +1,4 @@
 [{<<"damsel">>,
   {git,"https://github.com/valitydev/damsel.git",
-       {ref,"bfedcb9dbb0bfdbd7a06a86417b49be6e807b98d"}},
+       {ref,"c32f50f875bd1c58957e507420a23f7d2fac3ecb"}},
   0}].
