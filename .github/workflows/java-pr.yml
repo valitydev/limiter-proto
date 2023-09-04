@@ -7,4 +7,4 @@ on:
 
 jobs:
   build:
-    uses: valitydev/java-workflow/.github/workflows/maven-thrift-build.yml@v1
+    uses: valitydev/java-workflow/.github/workflows/maven-thrift-build.yml@719d11e63d9fab9d3299f0c8d74db1f8637431a5 # v2
