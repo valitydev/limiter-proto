@@ -40,6 +40,16 @@ struct LimitConfig {
     9: optional LimitScope scope
     10: optional string description
     12: optional OperationLimitBehaviour op_behaviour
+    /**
+     * Convert operation's amount if its context currency differs from
+     * limit-turnover metric (see `LimitTurnoverAmount`).
+     *
+     * Defaults to `false` if undefined.
+     *
+     * If `false` and currency codes does not match, then limiter
+     * throws `InvalidOperationCurrency` exception (see limiter-proto).
+     */
+    13: optional bool convert_currency
 
     // deprecated
     4: optional LimitBodyType body_type_deprecated
