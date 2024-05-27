@@ -44,16 +44,17 @@ struct LimitConfig {
      * Convert operation's amount if its context currency differs from
      * limit-turnover metric (see `LimitTurnoverAmount`).
      *
-     * Defaults to `false` if undefined.
-     *
-     * If `false` and currency codes does not match, then limiter
-     * throws `InvalidOperationCurrency` exception (see limiter-proto).
+     * If undefined and currency codes does not match, then limiter
+     * throws `InvalidOperationCurrency` exception (see
+     * limiter-proto).
      */
-    13: optional bool convert_currency
+    13: optional CurrencyConversion currency_conversion
 
     // deprecated
     4: optional LimitBodyType body_type_deprecated
 }
+
+struct CurrencyConversion {}
 
 struct OperationLimitBehaviour {
     1: optional OperationBehaviour invoice_payment_refund
