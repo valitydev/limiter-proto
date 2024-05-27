@@ -44,7 +44,7 @@ struct LimitConfig {
      * Convert operation's amount if its context currency differs from
      * limit-turnover metric (see `LimitTurnoverAmount`).
      *
-     * If undefined and currency codes does not match, then limiter
+     * If undefined and currency codes do not match, then limiter
      * throws `InvalidOperationCurrency` exception (see
      * limiter-proto).
      */
