@@ -26,6 +26,7 @@ struct LimitConfigParams {
     8: required LimitScope scope
     9: optional string description
     10: required OperationLimitBehaviour op_behaviour
+    11: optional CurrencyConversion currency_conversion
 }
 
 struct LimitConfig {
