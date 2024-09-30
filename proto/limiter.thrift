@@ -123,6 +123,11 @@ service Limiter {
         6: PaymentToolNotSupported e6
     )
 
+    list<Limit> GetBatch(1: LimitRequest request, 2: LimitContext context) throws (
+        1: LimitNotFound e1,
+        2: base.InvalidRequest e2
+    )
+
     list<Limit> HoldBatch(1: LimitRequest request, 2: LimitContext context) throws (
         1: LimitNotFound e1,
         3: base.InvalidRequest e2,
