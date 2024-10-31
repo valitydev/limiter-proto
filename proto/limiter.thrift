@@ -148,7 +148,7 @@ service Limiter {
         4: ForbiddenOperationAmount e4
     )
 
-    Clock RollbackBatch(1: LimitRequest request, 2: LimitContext context) throws (
+    void RollbackBatch(1: LimitRequest request, 2: LimitContext context) throws (
         1: LimitNotFound e1,
         2: LimitChangeNotFound e2,
         3: base.InvalidRequest e3,
