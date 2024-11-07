@@ -79,6 +79,11 @@ exception PaymentToolNotSupported {
 
 service Limiter {
 
+    Limit GetWithVersion(1: LimitID id, 2: Version version, 3: LimitContext context) throws (
+        1: LimitNotFound e1,
+        2: base.InvalidRequest e2
+    )
+
     Limit Get(1: LimitID id, 2: Clock clock, 3: LimitContext context) throws (
         1: LimitNotFound e1,
         2: base.InvalidRequest e2
