@@ -123,11 +123,23 @@ service Limiter {
         6: PaymentToolNotSupported e6
     )
 
+    /**
+     * Получение значений лимитов на момент времени запроса. Если
+     * сделать два запроса, между которыми лимит был изменен, то
+     * вернет разные значения.
+     */
     list<Limit> GetValues(1: LimitRequest request, 2: LimitContext context) throws (
         1: LimitNotFound e1,
         2: base.InvalidRequest e2
     )
 
+    /**
+     * Получение значений лимитов после их изменения в текущей
+     * операции.
+     * В момент совершения операции 'холд' значение лимита меняется,
+     * данный метод будет возвращать это значение вне зависимости от
+     * последующих изменений лимита.
+     */
     list<Limit> GetBatch(1: LimitRequest request, 2: LimitContext context) throws (
         1: LimitNotFound e1,
         2: base.InvalidRequest e2
