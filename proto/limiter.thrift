@@ -31,7 +31,7 @@ struct Limit {
 
 struct LimitChange {
     1: required LimitID id
-    2: optional Version version
+    2: required Version version
 }
 
 struct LimitRequest {
