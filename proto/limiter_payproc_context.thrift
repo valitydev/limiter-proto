@@ -1,4 +1,5 @@
 include "proto/domain.thrift"
+include "proto/payment_processing.thrift"
 include "limiter_base.thrift"
 
 namespace java dev.vality.limiter.payproc.context
@@ -38,4 +39,10 @@ struct InvoicePayment {
     3: optional domain.InvoicePaymentRefund refund
     4: optional domain.InvoicePaymentChargeback chargeback
     5: optional limiter_base.Route route
+    6: optional InvoicePaymentSession session
+}
+
+struct InvoicePaymentSession {
+    1: required payment_processing.InvoicePaymentSession session
+    2: optional payment_processing.SessionResult result
 }
