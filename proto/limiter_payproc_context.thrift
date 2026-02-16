@@ -45,4 +45,5 @@ struct InvoicePayment {
 struct InvoicePaymentSession {
     1: optional payment_processing.InvoicePaymentSession session
     2: optional payment_processing.SessionResult result
+    3: optional limiter_base.Route route
 }
