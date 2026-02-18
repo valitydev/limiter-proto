@@ -30,6 +30,7 @@ struct OperationInvoicePaymentChargeback {}
 struct Invoice {
     1: optional domain.Invoice invoice
     2: optional InvoicePayment payment
+    3: optional InvoicePaymentSession session
 }
 
 struct InvoicePayment {
@@ -39,3 +40,5 @@ struct InvoicePayment {
     4: optional domain.InvoicePaymentChargeback chargeback
     5: optional limiter_base.Route route
 }
+
+struct InvoicePaymentSession {}
